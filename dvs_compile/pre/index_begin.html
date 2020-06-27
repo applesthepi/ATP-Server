@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	background-color: #1c1c1c;
+	margin: 0px;
+	overflow: hidden;
+}
+h1 {
+	color: #f28f05;
+}
+h3 {
+	color: #f0f0f0;
+	margin: 0px;
+}
+p {
+	color: #b5b5b5;
+}
+.day {
+	clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+	position: absolute;
+	left: 0px;
+}
+.night {
+	clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+	position: absolute;
+	left: 0px;
+}
+.day_con {
+	position: absolute;
+}
+.night_con {
+	position: absolute;
+}
+#big {
+	top: 165px;
+	left: 800px;
+	position: fixed;
+	width: calc(100% - 810px);
+}
+.banner {
+	text-align: center;
+	font-size: 80px;
+	margin: 0px;
+}
+.header {
+	background-color: #242424;
+}
+.members {
+	background-color: #242424;
+	margin-top: 35px;
+}
+.view {
+	width: calc(100% - 310px);
+	height: calc(100% - 310px);
+}
+
+
+
+
+.tag_owner {
+	color: #ffae00;
+}
+.tag_admin {
+	color: #fb00ff;
+}
+.tag_mod {
+	color: #ff1f1f;
+}
+.tag_member {
+	color: #5e71eb;
+}
+</style>
+<script>
+
+function openUser(user) {
+	document.getElementById("frame").src = user + ".html";
+}
+
+</script>
+</head>
+<body>
+
+<!--
+<div class="header">
+	<h1 class="banner">DVS Members</h1>
+</div>
+-->
+
+<table>
+<tr valign="top"">
+	<td style="width: 300px">
+		<div class="members">

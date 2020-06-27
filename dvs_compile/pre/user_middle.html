@@ -1,0 +1,219 @@
+let loadedImages = [];
+let interval = 0;
+let changed = false;
+
+let stashBig = [];
+let stashBigNames = [];
+
+function SearchBig(file) {
+	for (let i = 0; i < stashBigNames.length; i++) {
+		if (stashBigNames[i] == file)
+			return i;
+	}
+	
+	console.error("failed to search big");
+	return -1;
+}
+
+function enablePic(x) {
+	changed = true;
+	let big = document.getElementById("big");
+	big.parentNode.replaceChild(stashBig[SearchBig(x.target.src)], big);
+}
+
+function runHigh() {
+	let finished = true;
+	
+	for (let a = 0; a < loadedImages.length; a++) {
+		if (!loadedImages[a][0][0] || !loadedImages[a][0][1] || !loadedImages[a][1][0] || !loadedImages[a][1][1]) {
+			finished = false;
+			break;
+		}
+	}
+	
+	if (finished) {
+		
+		for (let i = 0; i < pictures.length; i++) {
+			{
+				let splitA = document.createElement("img");
+				let big = document.createElement("img");
+				big.id = "big";
+			
+				splitA.onload = function() {
+					let spA = document.getElementById("sp_a_" + pictures[i]);
+					spA.parentNode.replaceChild(splitA, spA);
+				};
+				splitA.className = "day";
+				splitA.src = pictures[i] + "_d_s_h.png?dummy=" + rand;
+				
+				big.onload = function() {
+					stashBig[SearchBig(pictures[i] + "_d")] = big;
+					if (!changed && i == 0) {
+						changed = true;
+						let big = document.getElementById("big");
+						big.parentNode.replaceChild(stashBig[SearchBig(pictures[i] + "_d")], big);
+					}
+				};
+				big.id = "big";
+				big.src = pictures[i] + "_d_b_h.png?dummy=" + rand;
+			}
+			{
+				let splitB = document.createElement("img");
+				let big = document.createElement("img");
+				big.id = "big";
+				
+				splitB.onload = function() {
+					let spB = document.getElementById("sp_b_" + pictures[i]);
+					spB.parentNode.replaceChild(splitB, spB);
+				};
+				splitB.className = "night";
+				splitB.src = pictures[i] + "_n_s_h.png?dummy=" + rand;
+				
+				big.onload = function() {
+					stashBig[SearchBig(pictures[i] + "_n")] = big;
+				};
+				big.id = "big";
+				big.src = pictures[i] + "_n_b_h.png?dummy=" + rand;
+			}
+		}
+		
+		window.clearInterval(interval);
+		console.log("finished");
+		return;
+	}
+}
+
+window.onload = function() {
+	
+	
+	for (let i = 0; i < pictures.length; i++) {
+		loadedImages.push([[false, false], [false, false]]);
+		
+		let fullContainer = document.createElement("div");
+		
+		let pictureSplitContainer = document.createElement("table");
+		let pictureSplitContainerData = document.createElement("tr");
+		let pictureSplitA = document.createElement("td");
+		let pictureSplitB = document.createElement("td");
+		
+		let splitALink = document.createElement("a");
+		let splitA = document.createElement("img");
+		
+		let splitBLink = document.createElement("a");
+		let splitB = document.createElement("img");
+		
+		let date = document.createElement("p");
+		let title = document.createElement("h3");
+		
+		fullContainer.setAttribute("style", "height: 320px");
+		
+		let nameDate = "";
+		let nameName = "";
+		let a = 0;
+		
+		while (names[i][a] != ";") {
+			nameDate += names[i][a];
+			a++;
+			
+			if (a >= names[i].length) {
+				alert("missing date format! report this to applesthepi!");
+				return;
+			}
+		}
+		
+		a++;
+		
+		while (a < names[i].length) {
+			nameName += names[i][a];
+			a++;
+		}
+		
+		title.innerHTML = nameName;
+		title.style.margin = "0px";
+		title.style.display = "inline";
+		
+		date.innerHTML = "[ " + nameDate + " ]";
+		date.style.marginRight = "5px";
+		date.style.display = "inline";
+		
+		{
+			splitALink.href = pictures[i] + "_d_a.png";
+			splitALink.download = "dvs_" + pictures[i] + "_day.png";
+			splitALink.setAttribute("style", "width: 240px; height: 270px; left: 0px; display: block; position: absolute;");
+			splitALink.onmouseenter = enablePic;
+			splitALink.src = pictures[i] + "_d";
+			
+			splitA.className = "day";
+			splitA.id = "sp_a_" + pictures[i];
+			
+			let big = document.createElement("img");
+			big.id = "big";
+			
+			splitA.onload = function() {
+				loadedImages[i][0][0] = true;
+			};
+			splitA.src = pictures[i] + "_d_s.png?dummy=" + rand;
+			
+			big.onload = function() {
+				loadedImages[i][0][1] = true;
+			};
+			big.src = pictures[i] + "_d_b.png?dummy=" + rand;
+			
+			stashBig.push(big);
+			stashBigNames.push(pictures[i] + "_d");
+		}
+		
+		{
+			splitBLink.href = pictures[i] + "_n_a.png";
+			splitBLink.download = "dvs_" + pictures[i] + "_night.png";
+			splitBLink.setAttribute("style", "width: 240px; height: 270px; left: 240px; display: block; position: absolute;");
+			splitBLink.onmouseenter = enablePic;
+			splitBLink.src = pictures[i] + "_n";
+			
+			splitB.className = "night";
+			splitB.id = "sp_b_" + pictures[i];
+			
+			let big = document.createElement("img");
+			big.id = "big";
+			
+			splitB.onload = function() {
+				loadedImages[i][1][0] = true;
+			};
+			splitB.src = pictures[i] + "_n_s.png?dummy=" + rand;
+			
+			big.onload = function() {
+				loadedImages[i][1][1] = true;
+			};
+			big.src = pictures[i] + "_n_b.png?dummy=" + rand;
+			
+			stashBig.push(big);
+			stashBigNames.push(pictures[i] + "_n");
+		}
+		
+		pictureSplitA.appendChild(splitA);
+		pictureSplitB.appendChild(splitB);
+		
+		pictureSplitA.appendChild(splitALink);
+		pictureSplitB.appendChild(splitBLink);
+		
+		pictureSplitA.className = "day_con";
+		pictureSplitB.className = "night_con";
+		
+		pictureSplitContainerData.appendChild(pictureSplitA);
+		pictureSplitContainerData.appendChild(pictureSplitB);
+		
+		pictureSplitContainer.appendChild(pictureSplitContainerData);
+		
+		fullContainer.appendChild(date);
+		fullContainer.appendChild(title);
+		fullContainer.appendChild(pictureSplitContainer);
+		
+		document.getElementById("pic").appendChild(fullContainer);
+	}
+	
+	interval = window.setInterval(runHigh, 100);
+};
+
+</script>
+</head>
+<body>
