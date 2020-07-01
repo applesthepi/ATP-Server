@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: #1C1C1E;
+  background-color: #141416;
 }
 
 ul {
@@ -92,4 +92,32 @@ iframe {
 
 h1, h2, h3, h4, p {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.fbanner {
+	background-color: #313630;
+	width: 90%;
+	height: 100px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.fbanner_text {
+	margin: 0;
+
+	height: 100%;
+
+	top: 0px;
+	display: flex;
+	  justify-content: center;
+	  align-items: center;
+}
+
+.fbanner_head {
+	margin: auto;
+	text-align: center;
+	width: calc(100% - 512px - 64px);
 }

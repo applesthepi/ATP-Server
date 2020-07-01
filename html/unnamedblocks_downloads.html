@@ -78,7 +78,7 @@
 				lastCategory = table;
 			}
 
-			function AddDownload(date, version) {
+			function AddDownload(date, version, noAVX) {
 				let download = document.createElement("tr");
 
 				let cellInfo = document.createElement("td");
@@ -93,41 +93,69 @@
 				eVersion.innerHTML = version;
 				eVersion.className = "version";
 
-				let linkAVX2 = document.createElement("a");
-				linkAVX2.href = "Unnamed_Blocks_" + version + "_avx.7z";
-				linkAVX2.target = "_blank";
-				linkAVX2.style = "text-decoration: none;";
+				if (noAVX == null || noAVX == false) {
+					let linkAVX2 = document.createElement("a");
+					linkAVX2.href = "Unnamed_Blocks_" + version + "_avx.7z";
+					linkAVX2.target = "_blank";
+					linkAVX2.style = "text-decoration: none;";
 
-				let linkDefault = document.createElement("a");
-				linkDefault.href = "Unnamed_Blocks_" + version + "_def.7z";
-				linkDefault.target = "_blank";
-				linkDefault.style = "text-decoration: none;";
+					let linkDefault = document.createElement("a");
+					linkDefault.href = "Unnamed_Blocks_" + version + "_def.7z";
+					linkDefault.target = "_blank";
+					linkDefault.style = "text-decoration: none;";
 
-				let textAVX2 = document.createElement("p");
-				textAVX2.innerHTML = "+AVX2";
-				textAVX2.className = "download";
+					let textAVX2 = document.createElement("p");
+					textAVX2.innerHTML = "+AVX2";
+					textAVX2.className = "download";
 
-				let textDefault = document.createElement("p");
-				textDefault.innerHTML = "Default";
-				textDefault.className = "download";
+					let textDefault = document.createElement("p");
+					textDefault.innerHTML = "Default";
+					textDefault.className = "download";
 
-				linkAVX2.appendChild(textAVX2);
-				linkDefault.appendChild(textDefault);
+					linkAVX2.appendChild(textAVX2);
+					linkDefault.appendChild(textDefault);
 
-				cellAVX2.appendChild(linkAVX2);
-				cellDefault.appendChild(linkDefault);
+					cellAVX2.appendChild(linkAVX2);
+					cellDefault.appendChild(linkDefault);
+				} else {
+					let linkDefault = document.createElement("a");
+					linkDefault.href = "Unnamed_Blocks_" + version + ".7z";
+					linkDefault.target = "_blank";
+					linkDefault.style = "text-decoration: none;";
+
+					let textDefault = document.createElement("p");
+					textDefault.innerHTML = "Download";
+					textDefault.className = "download";
+
+					linkDefault.appendChild(textDefault);
+					cellDefault.appendChild(linkDefault);
+				}
 
 				cellInfo.appendChild(eDate);
 				cellInfo.appendChild(eVersion);
 
 				download.appendChild(cellInfo);
-				download.appendChild(cellAVX2);
-				download.appendChild(cellDefault);
 
+				if (noAVX == null || noAVX == false)
+					download.appendChild(cellAVX2);
+
+				download.appendChild(cellDefault);
 				lastCategory.appendChild(download);
 			}
 
 			window.onload = function() {
+
+				//AddNamespace("Alpha - Post RHR Nuking");
+				
+				//AddCategory("0.0.2");
+
+				AddNamespace("Alpha - Pre RHR Nuking");
+				
+				AddCategory("0.0.1");
+				AddDownload("5/25/2020", "0.0.1.0", true);
+
+
+				/*
 				AddNamespace("Release");
 
 				AddCategory("1.1");
@@ -159,6 +187,7 @@
 				AddDownload("6/26/2020", "0.0.2");
 				AddDownload("6/26/2020", "0.0.1");
 				AddDownload("6/26/2020", "0.0.0");
+				*/
 			};
 		</script>
 	</head>

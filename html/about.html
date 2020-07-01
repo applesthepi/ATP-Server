@@ -4,14 +4,29 @@
 <head>
 	<title>About</title>
 	<script>
+var headerDiv = null;
+var subHeaderDiv = null;
+
+function updateHeader() {
+	const height = headerDiv.offsetHeight;
+	subHeaderDiv.style = "height: calc(100% - " + height + "px); top: " + height + "px;";
+}
+
+function runHeader() {
+	headerDiv = document.getElementsByClassName("super_header")[0];
+	subHeaderDiv = document.getElementsByClassName("super_container")[0];
+
+	setInterval(updateHeader, 50);
+}
 		window.onload = function () {
 			document.getElementById("m_about").className = "active";
+			runHeader();
 		};
 	</script>
 	<style>
 body {
   margin: 0;
-  background-color: #1C1C1E;
+  background-color: #141416;
 }
 
 ul {
@@ -104,6 +119,48 @@ iframe {
 h1, h2, h3, h4, p {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.fbanner {
+	background-color: #313630;
+	width: 90%;
+	height: 100px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.fbanner_text {
+	margin: 0;
+
+	height: 100%;
+
+	top: 0px;
+	display: flex;
+	  justify-content: center;
+	  align-items: center;
+}
+
+.fbanner_head {
+	margin: auto;
+	text-align: center;
+	width: calc(100% - 512px - 64px);
+}
+
+		.sidebar_L {
+			position: absolute;
+			top: 0px;
+			left: 8px;
+			display: block;
+		}
+
+		.sidebar_R {
+			position: absolute;
+			top: 0px;
+			right: 8px;
+			display: block;
+		}
 	</style>
 </head>
 
@@ -111,15 +168,58 @@ h1, h2, h3, h4, p {
 <div class="super_header">
 	<h1>ATP</h1>
 	<ul>
-		<li><a id="m_about" href="about">about</a></li>
-		<li><a id="m_dvs" href="dvs">dvs</a></li>
-		<li><a id="m_ub" href="unnamedblocks">unnamed blocks</a></li>
+		<li><a id="m_about" href="about">About</a></li>
+		<li><a id="m_ub" href="unnamedblocks">Unnamed Blocks</a></li>
+		<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>
+		<li><a id="m_dvs" href="dvs">DVS - Members</a></li>
+		<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
 	</ul>
 </div>
-<div class="super_container">
-		<h2>test</h2>
-		<p>test</p>
+	<div class="super_container">
+		<div class="fbanner_head">
+			<br><br>
+			<h2>Interests</h2>
+			<p>
+				Programming lower level languages like C/C++ and more recently Rust are my most
+				prominent interests. I've always wanted to create applications that users can program with
+				for learning or for fun. I am a strong beliver in open source projects and all of my publicly released
+				applications are open source. Graphics, shaders, and parallel processing have also always
+				fascinated me.
+			</p>
+	
+			<br><br>
+			<h2>Projects</h2>
+			<p>
+				My most important project, Unnamed Blocks, is my most recent and the largest project I've ever
+				attepted (with a friend). It is licenced under GPL 3.0 (GNU General Public Licence), this is so people
+				can generaly do whatever they want with it. Base Logic is a previous project where the user uses
+				symbols as instructions.
+			</p>
+		</div>
+
+		<div class="sidebar_L">
+			<br><br><br><br>
+			<img src="https://applesthepi.com/res/me.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak1.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak2.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak3.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak4.png" />
+		</div>
+
+		<div class="sidebar_R">
+			<br><br><br><br>
+			<img src="https://applesthepi.com/res/dog1.png" />
+			<br>
+			<img src="https://applesthepi.com/res/dog3.png" />
+			<br>
+			<img src="https://applesthepi.com/res/dog2.png" />
+			<br>
+			<img src="https://applesthepi.com/res/dog4.png" />
+		</div>
 	</div>
 </body>
-
 </html>

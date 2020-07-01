@@ -4,14 +4,29 @@
 <head>
 	<title>DVS</title>
 	<script>
+var headerDiv = null;
+var subHeaderDiv = null;
+
+function updateHeader() {
+	const height = headerDiv.offsetHeight;
+	subHeaderDiv.style = "height: calc(100% - " + height + "px); top: " + height + "px;";
+}
+
+function runHeader() {
+	headerDiv = document.getElementsByClassName("super_header")[0];
+	subHeaderDiv = document.getElementsByClassName("super_container")[0];
+
+	setInterval(updateHeader, 50);
+}
 		window.onload = function () {
 			document.getElementById("m_dvs").className = "active";
+			runHeader();
 		};
 	</script>
 	<style>
 body {
   margin: 0;
-  background-color: #1C1C1E;
+  background-color: #141416;
 }
 
 ul {
@@ -104,6 +119,34 @@ iframe {
 h1, h2, h3, h4, p {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+.fbanner {
+	background-color: #313630;
+	width: 90%;
+	height: 100px;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.fbanner_text {
+	margin: 0;
+
+	height: 100%;
+
+	top: 0px;
+	display: flex;
+	  justify-content: center;
+	  align-items: center;
+}
+
+.fbanner_head {
+	margin: auto;
+	text-align: center;
+	width: calc(100% - 512px - 64px);
+}
 	</style>
 </head>
 
@@ -111,9 +154,11 @@ h1, h2, h3, h4, p {
 <div class="super_header">
 	<h1>ATP</h1>
 	<ul>
-		<li><a id="m_about" href="about">about</a></li>
-		<li><a id="m_dvs" href="dvs">dvs</a></li>
-		<li><a id="m_ub" href="unnamedblocks">unnamed blocks</a></li>
+		<li><a id="m_about" href="about">About</a></li>
+		<li><a id="m_ub" href="unnamedblocks">Unnamed Blocks</a></li>
+		<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>
+		<li><a id="m_dvs" href="dvs">DVS - Members</a></li>
+		<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
 	</ul>
 </div>
 	<div class="super_container" style="overflow-y: hidden;">

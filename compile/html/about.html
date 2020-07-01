@@ -4,21 +4,78 @@
 <head>
 	<title>About</title>
 	<script>
+{HEADER_JS}
 		window.onload = function () {
 			document.getElementById("m_about").className = "active";
+			runHeader();
 		};
 	</script>
 	<style>
 {HEADER_STYLE}
+
+		.sidebar_L {
+			position: absolute;
+			top: 0px;
+			left: 8px;
+			display: block;
+		}
+
+		.sidebar_R {
+			position: absolute;
+			top: 0px;
+			right: 8px;
+			display: block;
+		}
 	</style>
 </head>
 
 <body>
 {HEADER_BODY}
-<div class="super_container">
-		<h2>test</h2>
-		<p>test</p>
+	<div class="super_container">
+		<div class="fbanner_head">
+			<br><br>
+			<h2>Interests</h2>
+			<p>
+				Programming lower level languages like C/C++ and more recently Rust are my most
+				prominent interests. I've always wanted to create applications that users can program with
+				for learning or for fun. I am a strong beliver in open source projects and all of my publicly released
+				applications are open source. Graphics, shaders, and parallel processing have also always
+				fascinated me.
+			</p>
+	
+			<br><br>
+			<h2>Projects</h2>
+			<p>
+				My most important project, Unnamed Blocks, is my most recent and the largest project I've ever
+				attepted (with a friend). It is licenced under GPL 3.0 (GNU General Public Licence), this is so people
+				can generaly do whatever they want with it. Base Logic is a previous project where the user uses
+				symbols as instructions.
+			</p>
+		</div>
+
+		<div class="sidebar_L">
+			<br><br><br><br>
+			<img src="https://applesthepi.com/res/me.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak1.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak2.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak3.png" />
+			<br>
+			<img src="https://applesthepi.com/res/oak4.png" />
+		</div>
+
+		<div class="sidebar_R">
+			<br><br><br><br>
+			<img src="https://applesthepi.com/res/dog1.png" />
+			<br>
+			<img src="https://applesthepi.com/res/dog3.png" />
+			<br>
+			<img src="https://applesthepi.com/res/dog2.png" />
+			<br>
+			<img src="https://applesthepi.com/res/dog4.png" />
+		</div>
 	</div>
 </body>
-
 </html>
