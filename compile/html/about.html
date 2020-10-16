@@ -6,63 +6,29 @@
 	<title>About</title>
 	<script>
 {HEADER_JS}
-		var docHeader = null;
-		var docVideo = null;
-		var fasterImage = null;
-		var playlist = null;
 
-		function aboutUpdate() {
-			let currentWidth = docHeader.offsetWidth;
-
-			if (currentWidth < 1280) {
-				docVideo.width = currentWidth;
-				docVideo.height = Math.round(docVideo.width * 0.5625);
-
-				fasterImage.width = currentWidth;
-				fasterImage.height = Math.round(fasterImage.width * 0.5625);
-
-				// playlist.width = currentWidth;
-				// playlist.height = Math.round(playlist.width * 0.5625);
-			} else {
-				docVideo.width = 1280;
-				docVideo.height = 720;
-
-				fasterImage.width = 1280;
-				fasterImage.height = 720;
-
-				// playlist.width = 1280;
-				// playlist.height = 720;
-			}
-
-
-		}
-
-		function addSidebar(key, src, size) {
-			if (size == null) {
-				size = {x: 256, y: 256};
-			}
-			
-			let localDiv = document.createElement("div");
-			let localImg = document.createElement("img");
-			let localBr = document.createElement("br");
-
-			//localDiv.style = "width: " + size.x.toString() + "px; height: " + size.y.toString() + "px";
-
+		function addSidebar(key, src) {
 			let sidebar = document.getElementsByClassName("sidebar_" + key)[0];
+			
+			let lowImg = document.createElement("img");
+			lowImg.src = "https://applesthepi.com/res/64/" + src + ".png";
+			lowImg.classList.add("sidebar_image");
+			sidebar.appendChild(lowImg);
 
-			sidebar.appendChild(localBr);
-			sidebar.appendChild(localDiv);
+			let highImg = document.createElement("img");
+			highImg.src = "https://applesthepi.com/res/512/" + src + ".png";
+			highImg.classList.add("sidebar_image");
+			highImg.hidden = true;
 
-			registerImage(localDiv, localImg, src, size);
+
+			highImg.onload = function() {
+				sidebar.replaceChild(highImg, lowImg)
+				highImg.hidden = false;
+			};
 		}
 
 		window.onload = function () {
 			document.getElementById("m_about").className = "active";
-
-			docHeader = document.getElementsByClassName("fbanner_head")[0];
-			docVideo = document.getElementById("doc_video");
-			fasterImage = document.getElementById("faster_image");
-			// playlist = document.getElementById("playlist");
 
 			addSidebar("L", "me");
 			addSidebar("L", "oak12");
@@ -82,51 +48,52 @@
 			addSidebar("R", "dog1");
 			addSidebar("R", "dog3");
 			addSidebar("R", "dog2");
-			addSidebar("R", "dog4", {x: 256, y: 442});
-
-			setInterval(aboutUpdate, 50);
-			runHeader();
+			addSidebar("R", "dog4");
 		};
 	</script>
 	<style>
 {HEADER_STYLE}
 
+		/* Vars */
+		:root {
+			--text-width: 70%;
+		}
 		/*
 		OVERRIDE
 		*/
 		.fbanner_head {
-			margin: auto;
 			text-align: center;
-			width: calc(100% - 512px - 64px);
+			min-width: var(--text-width);
+			object-fit: contain;
 		}
 
 		.sidebar_L {
-			position: absolute;
-			top: 0px;
-			left: 8px;
-			display: block;
-			text-align: left;
-			max-width: 30%;
-
-			width: 50%;
-			height: 50%;
+			display: flex;
+			flex-wrap: nowrap;
+			flex-direction: column;
+			min-width: calc((100% - var(--text-width)) / 2);
 		}
 
 		.sidebar_R {
-			position: absolute;
-			top: 0px;
-			right: 8px;
-			display: block;
-			text-align: right;
-			max-width: 30%;
-			
-			width: 50%;
-			height: 50%;
+			display: flex;
+			flex-wrap: nowrap;
+			flex-direction: column;
+			min-width: calc((100% - var(--text-width)) / 2);
 		}
 
 		.sidebar_image {
-			max-width: 50%;
-			max-height: 50%;
+			display: block;
+			padding: 2%;
+			width: 100%; 
+			height: auto; 
+			object-fit: contain;
+		}
+		.super_container {
+			display:flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			overflow-x: hidden;
+			overflow-y: auto;
 		}
 	</style>
 </head>
@@ -134,6 +101,9 @@
 <body>
 {HEADER_BODY}
 	<div class="super_container">
+		<div class="sidebar_L">
+		</div>
+
 		<div class="fbanner_head">
 			<br><br>
 			<h2>Interests</h2>
@@ -163,12 +133,7 @@
 			</video>
 		</div>
 
-		<div class="sidebar_L">
-			<br><br><br>
-		</div>
-
 		<div class="sidebar_R">
-			<br><br><br>
 		</div>
 	</div>
 </body>

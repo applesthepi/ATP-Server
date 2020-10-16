@@ -2,251 +2,140 @@
 <html>
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Equality</title>
 	<script>
-var headerDiv = null;
-var subHeaderDiv = null;
 
-var registeredImages = [];
-var allLowRegistered = false;
-var highRes = [];
 
-function addHighRes(container, high, low) {
-	highRes.push({
-		container: container,
-		high: high,
-		low: low
-	});
-}
-
-function tickLowRegistered() {
-	if (allLowRegistered) {
-		//for (i = 0; i < highRes.length; i++) {
-		//	let img = highRes[i];
-		//	img.container.replaceChild(img.high, img.low);
-		//}
-
-		//highRes = [];
-	} else {
-		let found = false;
-		console.log(registeredImages.length);
-		for (i = 0; i < registeredImages.length; i++) {
-			if (!registeredImages[i].low) {
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
-			console.log("loading big", registeredImages);
-			allLowRegistered = true;
-
-			for (i = 0; i < registeredImages.length; i++) {
-				console.log("reeeee");
-				let img = registeredImages[i];
-				let big = document.createElement("img");
-
-				big.onload = function() {
-					console.log("re"); 
-					img.high = true;
-					img.container.replaceChild(big, img.element);
-					big.style.display = "block";
-				};
-
-				big.style.display = "none";
-				big.src = "https://applesthepi.com/res/512/" + img.src + ".png";
-				//big.width = img.size.x.toString();
-				//big.height = img.size.y.toString();
-			}
-		}
-	}
-}
-
-function registerImage(imageContainer, element, src, size) {
-	if (size == null) {
-		size = {x: 256, y: 256};
-	}
-
-	const id = registeredImages.length;
-
-	registeredImages.push({
-		low: false,
-		high: false,
-		src: src,
-		container: imageContainer,
-		element: element,
-		size: size,
-	});
-	
-	element.style.display = "none";
-	element.src = "https://applesthepi.com/res/64/" + src + ".png";
-	//element.width = size.x.toString();
-	//element.height = size.y.toString();
-
-	element.onload = function() {
-		let reg = registeredImages[id];
-		reg.low = true;
-		imageContainer.appendChild(element);
-		element.style.display = "block";
-	};
-}
-
-function updateHeader() {
-	const height = headerDiv.offsetHeight;
-	subHeaderDiv.style = "height: calc(100% - " + height + "px); top: " + height + "px;";
-
-	tickLowRegistered();
-}
-
-function runHeader() {
-	headerDiv = document.getElementsByClassName("super_header")[0];
-	subHeaderDiv = document.getElementsByClassName("super_container")[0];
-
-	updateHeader();
-	setInterval(updateHeader, 50);
-}
-		window.onload = function () {
-			document.getElementById("m_equality").className = "active";
-			runHeader();
-		};
 	</script>
 	<style>
+html, body {
+	width: 100%;
+	height:100%;
+}
 body {
-  margin: 0;
-  background-color: #141416;
+	margin: 0;
+	background-color: #141416;
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: /*#313138;*/#171b1696;
-  /*position: fixed;*/
-  top: 80px;
-  width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: /*#313138;*/#171b1696;
+	/*position: fixed;*/
+	top: 80px;
+	width: 100%;
 }
 
 li {
-  float: left;
-  width: 200px;
-  max-width: 50%;
+	float: left;
+	width: 200px;
+	max-width: 50%;
 }
 
 li a {
-  display: block;
-  color: #e0e0e0;
-  text-align: center;
-  padding: 6px 6px;
-  text-decoration: none;
+	display: block;
+	color: #e0e0e0;
+	text-align: center;
+	padding: 6px 6px;
+	text-decoration: none;
 }
 
 li a:hover:not(.active) {
-  background-color: #2c332996;
+	background-color: #2c332996;
 }
 
 .active {
-  background-color: /*#ffae00;*/#90ff6586;
-  color: #000000;
+	background-color: /*#ffae00;*/#90ff6586;
+	color: #000000;
 }
 
 p {
-  color: #e0e0e0;
-  font-size: 20px;
-  
-  margin-top: 0px;
-  margin-left: 5px;
-  margin-bottom: 0px;
-  min-width: 20%;
+	color: #e0e0e0;
+	font-size: 20px;
+
+	margin-top: 0px;
+	margin-left: 5px;
+	margin-bottom: 0px;
+	min-width: 20%;
 }
 
 h1 {
-  color: /*#ffae00;*/#90ff6586;
-  font-size: 72px;
+	color: /*#ffae00;*/#90ff6586;
+	font-size: 72px;
 
-  margin-top: 0px;
-  margin-left: 5px;
-  margin-bottom: 0px;
+	margin-top: 0px;
+	margin-left: 5px;
+	margin-bottom: 0px;
 }
 
 h2 {
-  color: #90ff6586;
-  font-size: 40px;
+	color: #90ff6586;
+	font-size: 40px;
 
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-bottom: 10px;
 }
 
 .super_header {
-  position: fixed;
-  flex: 0 1 auto;
-  top: -10px;
-  left: 5px;
-  width: 100%;
-  background-image: url("https://applesthepi.com/res/channel_art.jpg");
+	flex: 0 1 auto;
+	top: -10px;
+	left: 5px;
+	width: 100%;
+	max-height: 20%;
+	background-image: url("https://applesthepi.com/res/channel_art.jpg");
 }
-
-.super_container {
-  margin: 0px;
-  padding: 0px;
-  position: fixed;
-
-  /*top: 150px;*/
-  width: 100%;
-  height: calc(100% - 160px);
-
-  overflow-x: hidden;
-  overflow-y: auto;
+@media (width > 18cm) {
+	.super_header {
+		position: sticky;
+	}
 }
 
 iframe {
-  padding: 0px;
-  border: 0px;
-  width: 100%;
-  height: 100%;
+	padding: 0px;
+	border: 0px;
+	width: 100%;
+	height: 100%;
 }
 
 h1, h2, h3, h4, p {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.fbanner {
-	background-color: #313630;
-	width: 90%;
-	height: 100px;
-
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.fbanner_text {
-	margin: 0;
-
-	height: 100%;
-
-	top: 0px;
-	display: flex;
-	  justify-content: center;
-	  align-items: center;
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .fbanner_head {
-	margin: auto;
 	text-align: center;
-	width: calc(100% - 64px);
-	min-width: 30%;
+	min-width:70%;
+	object-fit: contain;
 }
 
-		.super_container {
-			overflow-y: hidden;
-		}
+.sidebar_L {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+}
+
+.sidebar_R {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+}
+
+.sidebar_image {
+	display: block;
+	padding: 2%;
+	width: 20%; 
+	height: auto; 
+	object-fit: contain;
+}
+
 	</style>
 </head>
 
 <body>
+<div style="width:100%;height:100%;display:flex;flex-direction:column;">
 <div class="super_header">
 	<h1>ATP</h1>
 	<ul>
@@ -258,9 +147,7 @@ h1, h2, h3, h4, p {
 		<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
 	</ul>
 </div>
-<div class="super_container">
-	<embed src="https://applesthepi.com/res/the_liberal_hive_mind.pdf" width="100%" height="100%" />
-</div>
+<embed style="overflow:hidden;width:100%;height:100%;object-fit:contain;" src="https://applesthepi.com/res/the_liberal_hive_mind.pdf"/></div>
 </body>
 
 </html>
