@@ -1,0 +1,1 @@
+start wt -d "G:\ATP Server" -p "Command Prompt" cmd.exe /k call nginx.exe"

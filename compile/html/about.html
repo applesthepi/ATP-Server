@@ -2,22 +2,110 @@
 <html>
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>About</title>
 	<script>
 {HEADER_JS}
+		var docHeader = null;
+		var docVideo = null;
+		var fasterImage = null;
+		var playlist = null;
+
+		function aboutUpdate() {
+			let currentWidth = docHeader.offsetWidth;
+
+			if (currentWidth < 1280) {
+				docVideo.width = currentWidth;
+				docVideo.height = Math.round(docVideo.width * 0.5625);
+
+				fasterImage.width = currentWidth;
+				fasterImage.height = Math.round(fasterImage.width * 0.5625);
+
+				// playlist.width = currentWidth;
+				// playlist.height = Math.round(playlist.width * 0.5625);
+			} else {
+				docVideo.width = 1280;
+				docVideo.height = 720;
+
+				fasterImage.width = 1280;
+				fasterImage.height = 720;
+
+				// playlist.width = 1280;
+				// playlist.height = 720;
+			}
+
+
+		}
+
+		function addSidebar(key, src, size) {
+			if (size == null) {
+				size = {x: 256, y: 256};
+			}
+			
+			let localDiv = document.createElement("div");
+			let localImg = document.createElement("img");
+			let localBr = document.createElement("br");
+
+			localDiv.style = "width: " + size.x.toString() + "px; height: " + size.y.toString() + "px";
+
+			let sidebar = document.getElementsByClassName("sidebar_" + key)[0];
+
+			sidebar.appendChild(localBr);
+			sidebar.appendChild(localDiv);
+
+			registerImage(localDiv, localImg, src, size);
+		}
+
 		window.onload = function () {
 			document.getElementById("m_about").className = "active";
+
+			docHeader = document.getElementsByClassName("fbanner_head")[0];
+			docVideo = document.getElementById("doc_video");
+			fasterImage = document.getElementById("faster_image");
+			// playlist = document.getElementById("playlist");
+
+			addSidebar("L", "me");
+			addSidebar("L", "oak12");
+			addSidebar("L", "oak5");
+			addSidebar("L", "oak6");
+			addSidebar("L", "oak10");
+			addSidebar("L", "oak1");
+			addSidebar("L", "oak2");
+			addSidebar("L", "oak3");
+			addSidebar("L", "oak4");
+
+			addSidebar("R", "oak7");
+			addSidebar("R", "oak9");
+			addSidebar("R", "oak11");
+			addSidebar("R", "oak8");
+			addSidebar("R", "oak6");
+			addSidebar("R", "dog1");
+			addSidebar("R", "dog3");
+			addSidebar("R", "dog2");
+			addSidebar("R", "dog4", {x: 256, y: 442});
+
+			setInterval(aboutUpdate, 50);
 			runHeader();
 		};
 	</script>
 	<style>
 {HEADER_STYLE}
 
+		/*
+		OVERRIDE
+		*/
+		.fbanner_head {
+			margin: auto;
+			text-align: center;
+			width: calc(100% - 512px - 64px);
+		}
+
 		.sidebar_L {
 			position: absolute;
 			top: 0px;
 			left: 8px;
 			display: block;
+			text-align: left;
 		}
 
 		.sidebar_R {
@@ -25,6 +113,12 @@
 			top: 0px;
 			right: 8px;
 			display: block;
+			text-align: right;
+		}
+
+		.sidebar_image {
+			width: 50%;
+			height: 50%;
 		}
 	</style>
 </head>
@@ -42,7 +136,7 @@
 				applications are open source. Graphics, shaders, and parallel processing have also always
 				fascinated me.
 			</p>
-	
+
 			<br><br>
 			<h2>Projects</h2>
 			<p>
@@ -51,31 +145,24 @@
 				can generaly do whatever they want with it. Base Logic is a previous project where the user uses
 				symbols as instructions.
 			</p>
+
+			<br><br>
+			<img width="640" height="360" id="faster_image" src="https://applesthepi.com/res/faster.png">
+
+			<br><br>
+			<video width="640" height="360" id="doc_video" controls>
+				<source src="https://applesthepi.com/res/doc.mp4" type="video/mp4">
+			</video>
 		</div>
 
 		<div class="sidebar_L">
-			<br><br><br><br>
-			<img src="https://applesthepi.com/res/me.png" />
-			<br>
-			<img src="https://applesthepi.com/res/oak1.png" />
-			<br>
-			<img src="https://applesthepi.com/res/oak2.png" />
-			<br>
-			<img src="https://applesthepi.com/res/oak3.png" />
-			<br>
-			<img src="https://applesthepi.com/res/oak4.png" />
+			<br><br><br>
 		</div>
 
 		<div class="sidebar_R">
-			<br><br><br><br>
-			<img src="https://applesthepi.com/res/dog1.png" />
-			<br>
-			<img src="https://applesthepi.com/res/dog3.png" />
-			<br>
-			<img src="https://applesthepi.com/res/dog2.png" />
-			<br>
-			<img src="https://applesthepi.com/res/dog4.png" />
+			<br><br><br>
 		</div>
 	</div>
 </body>
+
 </html>
