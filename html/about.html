@@ -56,8 +56,8 @@ function tickLowRegistered() {
 
 				big.style.display = "none";
 				big.src = "https://applesthepi.com/res/512/" + img.src + ".png";
-				big.width = img.size.x.toString();
-				big.height = img.size.y.toString();
+				//big.width = img.size.x.toString();
+				//big.height = img.size.y.toString();
 			}
 		}
 	}
@@ -81,8 +81,8 @@ function registerImage(imageContainer, element, src, size) {
 	
 	element.style.display = "none";
 	element.src = "https://applesthepi.com/res/64/" + src + ".png";
-	element.width = size.x.toString();
-	element.height = size.y.toString();
+	//element.width = size.x.toString();
+	//element.height = size.y.toString();
 
 	element.onload = function() {
 		let reg = registeredImages[id];
@@ -146,7 +146,7 @@ function runHeader() {
 			let localImg = document.createElement("img");
 			let localBr = document.createElement("br");
 
-			localDiv.style = "width: " + size.x.toString() + "px; height: " + size.y.toString() + "px";
+			//localDiv.style = "width: " + size.x.toString() + "px; height: " + size.y.toString() + "px";
 
 			let sidebar = document.getElementsByClassName("sidebar_" + key)[0];
 
@@ -215,7 +215,7 @@ li a {
   display: block;
   color: #e0e0e0;
   text-align: center;
-  padding: 14px 16px;
+  padding: 6px 6px;
   text-decoration: none;
 }
 
@@ -235,11 +235,12 @@ p {
   margin-top: 0px;
   margin-left: 5px;
   margin-bottom: 0px;
+  min-width: 20%;
 }
 
 h1 {
   color: /*#ffae00;*/#90ff6586;
-  font-size: 90px;
+  font-size: 72px;
 
   margin-top: 0px;
   margin-left: 5px;
@@ -314,6 +315,7 @@ h1, h2, h3, h4, p {
 	margin: auto;
 	text-align: center;
 	width: calc(100% - 64px);
+	min-width: 30%;
 }
 
 		/*
@@ -331,6 +333,10 @@ h1, h2, h3, h4, p {
 			left: 8px;
 			display: block;
 			text-align: left;
+			max-width: 30%;
+
+			width: 50%;
+			height: 50%;
 		}
 
 		.sidebar_R {
@@ -339,11 +345,15 @@ h1, h2, h3, h4, p {
 			right: 8px;
 			display: block;
 			text-align: right;
+			max-width: 30%;
+			
+			width: 50%;
+			height: 50%;
 		}
 
 		.sidebar_image {
-			width: 50%;
-			height: 50%;
+			max-width: 50%;
+			max-height: 50%;
 		}
 	</style>
 </head>

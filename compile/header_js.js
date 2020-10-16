@@ -49,8 +49,8 @@ function tickLowRegistered() {
 
 				big.style.display = "none";
 				big.src = "https://applesthepi.com/res/512/" + img.src + ".png";
-				big.width = img.size.x.toString();
-				big.height = img.size.y.toString();
+				//big.width = img.size.x.toString();
+				//big.height = img.size.y.toString();
 			}
 		}
 	}
@@ -74,8 +74,8 @@ function registerImage(imageContainer, element, src, size) {
 	
 	element.style.display = "none";
 	element.src = "https://applesthepi.com/res/64/" + src + ".png";
-	element.width = size.x.toString();
-	element.height = size.y.toString();
+	//element.width = size.x.toString();
+	//element.height = size.y.toString();
 
 	element.onload = function() {
 		let reg = registeredImages[id];
