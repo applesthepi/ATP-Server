@@ -20,9 +20,27 @@
 			highImg.classList.add("sidebar_image");
 			highImg.hidden = true;
 
-
 			highImg.onload = function() {
 				sidebar.replaceChild(highImg, lowImg)
+				highImg.hidden = false;
+			};
+		}
+
+		function addCenter(src) {
+			let center = document.getElementsByClassName("fbanner_head")[0];
+			
+			let lowImg = document.createElement("img");
+			lowImg.src = "https://applesthepi.com/res/64/" + src + ".png";
+			lowImg.classList.add("center_image");
+			center.appendChild(lowImg);
+
+			let highImg = document.createElement("img");
+			highImg.src = "https://applesthepi.com/res/512/" + src + ".png";
+			highImg.classList.add("center_image");
+			highImg.hidden = true;
+
+			highImg.onload = function() {
+				center.replaceChild(highImg, lowImg)
 				highImg.hidden = false;
 			};
 		}
@@ -49,52 +67,12 @@
 			addSidebar("R", "dog3");
 			addSidebar("R", "dog2");
 			addSidebar("R", "dog4");
+
+			addCenter("faster");
 		};
 	</script>
 	<style>
 {HEADER_STYLE}
-
-		/* Vars */
-		:root {
-			--text-width: 70%;
-		}
-		/*
-		OVERRIDE
-		*/
-		.fbanner_head {
-			text-align: center;
-			min-width: var(--text-width);
-			object-fit: contain;
-		}
-
-		.sidebar_L {
-			display: flex;
-			flex-wrap: nowrap;
-			flex-direction: column;
-			min-width: calc((100% - var(--text-width)) / 2);
-		}
-
-		.sidebar_R {
-			display: flex;
-			flex-wrap: nowrap;
-			flex-direction: column;
-			min-width: calc((100% - var(--text-width)) / 2);
-		}
-
-		.sidebar_image {
-			display: block;
-			padding: 2%;
-			width: 100%; 
-			height: auto; 
-			object-fit: contain;
-		}
-		.super_container {
-			display:flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			overflow-x: hidden;
-			overflow-y: auto;
-		}
 	</style>
 </head>
 
@@ -125,12 +103,15 @@
 			</p>
 
 			<br><br>
-			<img width="640" height="360" id="faster_image" src="https://applesthepi.com/res/faster.png">
 
-			<br><br>
+			<!--
+			
+				<br><br>
 			<video width="640" height="360" id="doc_video" controls>
 				<source src="https://applesthepi.com/res/doc.mp4" type="video/mp4">
 			</video>
+
+			-->
 		</div>
 
 		<div class="sidebar_R">

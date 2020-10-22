@@ -6,12 +6,25 @@
 	<title>Equality</title>
 	<script>
 
-
 	</script>
 	<style>
+:root {
+	/* background */
+	--background-color-primary: #141414;
+	/* background accent */
+	--background-color-secondary: #1c1c1c;
+	/* background accent 2 */
+	--background-color-third: #252525;
+
+	/* text */
+	--forground-color-primary: #bebebe;
+	/* text-meta */
+	--forground-color-secondary: #969696;
+}
+
 body {
 	margin: 0;
-	background-color: #141416;
+	background-color: var(--background-color-primary);
 }
 
 ul {
@@ -49,7 +62,6 @@ li a:hover:not(.active) {
 }
 
 p {
-	color: #e0e0e0;
 	font-size: 20px;
 
 	margin-top: 0px;
@@ -59,7 +71,6 @@ p {
 }
 
 h1 {
-	color: /*#ffae00;*/#90ff6586;
 	font-size: 72px;
 
 	margin-top: 0px;
@@ -68,12 +79,16 @@ h1 {
 }
 
 h2 {
-	color: #90ff6586;
-	font-size: 40px;
+	font-size: 34px;
 
 	margin-top: 10px;
 	margin-left: 5px;
 	margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, p {
+	color: var(--forground-color-primary);
+	font-family: "Noto Sans";
 }
 
 .super_header {
@@ -84,6 +99,7 @@ h2 {
 	max-height: 20%;
 	background-image: url("https://applesthepi.com/res/channel_art.jpg");
 }
+
 @media (width > 18cm) {
 	.super_header {
 		position: sticky;
@@ -95,16 +111,6 @@ iframe {
 	border: 0px;
 	width: 100%;
 	height: 100%;
-}
-
-h1, h2, h3, h4, p {
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.fbanner_head {
-	text-align: center;
-	min-width:70%;
-	object-fit: contain;
 }
 
 .sidebar_L {
@@ -127,6 +133,45 @@ h1, h2, h3, h4, p {
 	object-fit: contain;
 }
 
+.fbanner_head {
+	text-align: center;
+	width: 70%;
+
+	margin-left: auto;
+	margin-right: auto;
+
+
+}
+
+.fbanner {
+	background-color: var(--background-color-secondary);
+	
+	width: 70%;
+	height: 50px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	text-align: center;
+	
+	border-width: 1px;
+	border-color: var(--background-color-third);
+	border-style: solid;
+}
+
+.fbanner_text {
+	margin: 0px;
+	height: 100%;
+
+	text-align: center;
+}
+
+.fbanner_text_center {
+	display: inline;
+}
 html, body {
 	width: 100%;
 	height:100%;

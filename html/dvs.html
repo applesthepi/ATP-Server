@@ -5,16 +5,40 @@
 	<title>DVS</title>
 	<script>
 
-
 		window.onload = function () {
 			document.getElementById("m_dvs").className = "active";
 			runHeader();
 		};
 	</script>
 	<style>
+:root {
+	/* colors must be in RGB form (NO ALPHA) because I apply the alpha later on */
+
+	/* background */
+	--background-color-primary: 20, 20, 20;
+	/* background accent */
+	--background-color-secondary: 28, 28, 28;
+	/* background accent 2 */
+	--background-color-third: 37, 37, 37;
+	/* background selection */
+	--background-color-selection: 69, 69, 69;
+
+	/* text */
+	--forground-color-primary: 190, 190, 190;
+	/* text-meta */
+	--forground-color-secondary: 150, 150, 150;
+
+	/* atp accent color */
+	--atp-color: 255, 38, 0;
+	/* alpha of nav bar */
+	--atp-alpha: 0.5;
+	/* something jonas put in */
+	--text-width: 70%;
+}
+
 body {
 	margin: 0;
-	background-color: #141416;
+	background-color: rgb(var(--background-color-primary));
 }
 
 ul {
@@ -22,15 +46,15 @@ ul {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: /*#313138;*/#171b1696;
-	/*position: fixed;*/
+	background-color: rgba(var(--background-color-secondary), var(--atp-alpha));
+
 	top: 80px;
 	width: 100%;
 }
 
 li {
 	float: left;
-	width: 200px;
+	width: 250px;
 	max-width: 50%;
 }
 
@@ -40,19 +64,19 @@ li a {
 	text-align: center;
 	padding: 6px 6px;
 	text-decoration: none;
+	font-size: 24px;
+	line-height: 24px;
 }
 
 li a:hover:not(.active) {
-	background-color: #2c332996;
+	background-color: rgba(var(--background-color-third), var(--atp-alpha));
 }
 
 .active {
-	background-color: /*#ffae00;*/#90ff6586;
-	color: #000000;
+	background-color: rgba(var(--background-color-selection), var(--atp-alpha));
 }
 
 p {
-	color: #e0e0e0;
 	font-size: 20px;
 
 	margin-top: 0px;
@@ -62,7 +86,6 @@ p {
 }
 
 h1 {
-	color: /*#ffae00;*/#90ff6586;
 	font-size: 72px;
 
 	margin-top: 0px;
@@ -71,12 +94,25 @@ h1 {
 }
 
 h2 {
-	color: #90ff6586;
-	font-size: 40px;
+	font-size: 34px;
 
 	margin-top: 10px;
 	margin-left: 5px;
 	margin-bottom: 10px;
+}
+
+.atp {
+	font-size: 96px;
+	
+	line-height: 96px;
+	margin-left: 16px;
+	color: #d62000;
+	text-shadow: -1px -1px 0 rgb(var(--atp-color)), 1px -1px rgb(var(--atp-color)), -1px 1px 0 rgb(var(--atp-color)), 1px 1px 0 rgb(var(--atp-color));
+}
+
+h1, h2, h3, h4, p {
+	color: rgb(var(--forground-color-primary));
+	font-family: "Noto Sans";
 }
 
 .super_header {
@@ -85,8 +121,25 @@ h2 {
 	left: 5px;
 	width: 100%;
 	max-height: 20%;
-	background-image: url("https://applesthepi.com/res/channel_art.jpg");
+	background-image: url("https://applesthepi.com/res/new_channel_art_segment.svg");
 }
+
+.super_container {
+	margin: 0px;
+	padding: 0px;
+	position: fixed;
+  
+	width: 100%;
+	height: calc(100% - 160px);
+  
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
 @media (width > 18cm) {
 	.super_header {
 		position: sticky;
@@ -100,36 +153,75 @@ iframe {
 	height: 100%;
 }
 
-h1, h2, h3, h4, p {
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.fbanner_head {
-	text-align: center;
-	min-width:70%;
-	object-fit: contain;
-}
-
 .sidebar_L {
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: column;
+
+	min-width: calc((100% - var(--text-width)) / 2);
 }
 
 .sidebar_R {
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: column;
+
+	min-width: calc((100% - var(--text-width)) / 2);
 }
 
 .sidebar_image {
 	display: block;
 	padding: 2%;
-	width: 20%; 
+	width: 100%; 
 	height: auto; 
 	object-fit: contain;
 }
 
+.center_image {
+	width: 80%;
+	height: auto;
+}
+
+.fbanner_head {
+	text-align: center;
+	width: 70%;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	min-width: var(--text-width);
+	object-fit: contain;
+}
+
+.fbanner {
+	background-color: rgb(var(--background-color-secondary));
+	
+	width: 70%;
+	height: 50px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	text-align: center;
+	
+	border-width: 1px;
+	border-color: rgb(var(--background-color-third));
+	border-style: solid;
+}
+
+.fbanner_text {
+	margin: 0px;
+	height: 100%;
+
+	text-align: center;
+}
+
+.fbanner_text_center {
+	display: inline;
+}
 
 		.super_container {
 			overflow-y: hidden;
@@ -139,12 +231,13 @@ h1, h2, h3, h4, p {
 
 <body>
 <div class="super_header">
-	<h1>ATP</h1>
+	<h1 class="atp">ATP</h1>
 	<ul>
 		<li><a id="m_about" href="about">About</a></li>
-		<li><a id="m_equality" href="equality">Equality</a></li>
+		<li><a id="m_escape" href="escape">Escape</a></li>
+		<li><a id="m_the_liberal_hive_mind" href="the_liberal_hive_mind">The Liberal Hive Mind</a></li>
 		<li><a id="m_ub" href="unnamedblocks">Unnamed Blocks</a></li>
-		<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>
+		<!--<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>-->
 		<li><a id="m_dvs" href="dvs">DVS - Members</a></li>
 		<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
 	</ul>
