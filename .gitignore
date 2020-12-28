@@ -4,4 +4,7 @@ docs
 contrib
 dvs_compile/INT
 dvs_compile/build
+pic_compile/other
+pic_compile/target
 res/ub_animation_render.avi
+res/jre1.8.0_211

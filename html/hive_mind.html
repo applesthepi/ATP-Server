@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="description" content="Politics Paper #2">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hive Mind</title>
+	<script>
+		
+		window.onload = function () {
+			document.getElementById("m_hive_mind").className = "active";
+			runHeader();
+		};
+	</script>
+	<style>
+		:root {
+	/* colors must be in RGB form (NO ALPHA) because I apply the alpha later on */
+
+	/* background */
+	--background-color-primary: 20, 20, 20;
+	/* background accent */
+	--background-color-secondary: 28, 28, 28;
+	/* background accent 2 */
+	--background-color-third: 37, 37, 37;
+	/* background selection */
+	--background-color-selection: 69, 69, 69;
+
+	/* text */
+	--forground-color-primary: 190, 190, 190;
+	/* text-meta */
+	--forground-color-secondary: 150, 150, 150;
+
+	/* atp accent color */
+	--atp-color: 255, 38, 0;
+	/* alpha of nav bar */
+	--atp-alpha: 0.5;
+	/* something jonas put in */
+	--text-width: 70%;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: rgba(var(--background-color-secondary), var(--atp-alpha));
+
+	top: 80px;
+	width: 100%;
+}
+
+li {
+	float: left;
+	width: 250px;
+	max-width: 50%;
+}
+
+li a {
+	display: block;
+	color: #e0e0e0;
+	text-align: center;
+	padding: 6px 6px;
+	text-decoration: none;
+	font-size: 24px;
+	line-height: 24px;
+}
+
+li a:hover:not(.active) {
+	background-color: rgba(var(--background-color-third), var(--atp-alpha));
+}
+
+.active {
+	background-color: rgba(var(--background-color-selection), var(--atp-alpha));
+}
+
+p {
+	font-size: 20px;
+
+	margin-top: 0px;
+	margin-left: 5px;
+	margin-bottom: 0px;
+	min-width: 20%;
+}
+
+h1 {
+	font-size: 72px;
+
+	margin-top: 0px;
+	margin-left: 5px;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 34px;
+
+	margin-top: 10px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+}
+
+.atp {
+	font-size: 96px;
+	
+	line-height: 96px;
+	margin-left: 16px;
+	color: #d62000;
+	text-shadow: -1px -1px 0 rgb(var(--atp-color)), 1px -1px rgb(var(--atp-color)), -1px 1px 0 rgb(var(--atp-color)), 1px 1px 0 rgb(var(--atp-color));
+}
+
+h1, h2, h3, h4, p {
+	color: rgb(var(--forground-color-primary));
+	font-family: "Noto Sans";
+}
+
+.gpu_image {
+	background-image: url("https://applesthepi.com/res/gpu_fan.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	filter: blur(32px);
+	transform: scale(1.2);
+
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	z-index: -100;
+
+	overflow: hidden;
+}
+
+.super_super_container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	position: absolute;
+}
+
+.super_header {
+	flex: 0 1 auto;
+	top: -10px;
+	left: 5px;
+	width: 100%;
+	max-height: 20%;
+
+	display: block;
+}
+
+.super_container {
+	margin: 0px;
+	padding: 0px;
+  
+	width: 100%;
+
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow-y: scroll;
+	height: 100%;
+	flex: 1;
+}
+
+/*@media screen and (max-width > 10cm) {
+	.super_header {
+		position: sticky;
+	}
+}*/
+
+iframe {
+	padding: 0px;
+	border: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+.sidebar_L {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+
+	min-width: calc((100% - var(--text-width)) / 2);
+}
+
+.sidebar_R {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: column;
+
+	min-width: calc((100% - var(--text-width)) / 2);
+}
+
+.sidebar_image {
+	display: block;
+	padding: 2%;
+	width: 100%; 
+	height: auto; 
+	object-fit: contain;
+}
+
+.center_image {
+	width: 80%;
+	height: auto;
+}
+
+.fbanner_head {
+	text-align: center;
+	padding: 20px;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	min-width: var(--text-width);
+	object-fit: contain;
+}
+
+.fbanner {
+	background-color: rgb(var(--background-color-secondary));
+	
+	width: 70%;
+	height: 50px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+	text-align: center;
+	
+	border-width: 1px;
+	border-color: rgb(var(--background-color-third));
+	border-style: solid;
+}
+
+.fbanner_text {
+	margin: 0px;
+	height: 100%;
+
+	text-align: center;
+}
+
+.fbanner_text_center {
+	display: inline;
+}
+
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div style="width:100%;height:100%;display:flex;flex-direction:column;">
+		<div class="gpu_image"></div>
+<div class="super_header">
+	<h1 class="atp">ATP</h1>
+	<nav>
+		<ul>
+			<li><a id="m_about" href="about">About</a></li>
+			<li><a id="m_escape" href="escape">Escape</a></li>
+			<li><a id="m_hive_mind" href="hive_mind">Hive Mind</a></li>
+			<li><a id="m_ub" href="unnamedblocks">Unnamed Blocks</a></li>
+			<!--<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>-->
+			<li><a id="m_dvs" href="dvs">DVS - Members</a></li>
+			<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
+		</ul>
+	</nav>
+</div>
+		<embed style="overflow:hidden;width:100%;height:100%;object-fit:contain;"
+			src="https://applesthepi.com/res/the_liberal_hive_mind.pdf" />
+	</div>
+</body>
+
+</html>

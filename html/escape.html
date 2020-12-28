@@ -2,13 +2,18 @@
 <html>
 
 <head>
+	<meta name="description" content="Politics Paper #1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Escape</title>
 	<script>
-
+		
+		window.onload = function () {
+			document.getElementById("m_escape").className = "active";
+			runHeader();
+		};
 	</script>
 	<style>
-:root {
+		:root {
 	/* colors must be in RGB form (NO ALPHA) because I apply the alpha later on */
 
 	/* background */
@@ -35,7 +40,7 @@
 
 body {
 	margin: 0;
-	background-color: rgb(var(--background-color-primary));
+	overflow: hidden;
 }
 
 ul {
@@ -112,36 +117,58 @@ h1, h2, h3, h4, p {
 	font-family: "Noto Sans";
 }
 
+.gpu_image {
+	background-image: url("https://applesthepi.com/res/gpu_fan.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	filter: blur(32px);
+	transform: scale(1.2);
+
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	z-index: -100;
+
+	overflow: hidden;
+}
+
+.super_super_container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	position: absolute;
+}
+
 .super_header {
 	flex: 0 1 auto;
 	top: -10px;
 	left: 5px;
 	width: 100%;
 	max-height: 20%;
-	background-image: url("https://applesthepi.com/res/new_channel_art_segment.svg");
+
+	display: block;
 }
 
 .super_container {
 	margin: 0px;
 	padding: 0px;
-	position: fixed;
   
 	width: 100%;
-	height: calc(100% - 160px);
-  
-	overflow-x: hidden;
-	overflow-y: auto;
 
-	display:flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	background-color: rgba(0, 0, 0, 0.7);
+	overflow-y: scroll;
+	height: 100%;
+	flex: 1;
 }
 
-@media (width > 18cm) {
+/*@media screen and (max-width > 10cm) {
 	.super_header {
 		position: sticky;
 	}
-}
+}*/
 
 iframe {
 	padding: 0px;
@@ -181,7 +208,7 @@ iframe {
 
 .fbanner_head {
 	text-align: center;
-	width: 70%;
+	padding: 20px;
 
 	margin-left: auto;
 	margin-right: auto;
@@ -219,28 +246,35 @@ iframe {
 .fbanner_text_center {
 	display: inline;
 }
-html, body {
-	width: 100%;
-	height:100%;
-}
+
+		html,
+		body {
+			width: 100%;
+			height: 100%;
+		}
 	</style>
 </head>
 
 <body>
-<div style="width:100%;height:100%;display:flex;flex-direction:column;">
+	<div style="width:100%;height:100%;display:flex;flex-direction:column;">
+		<div class="gpu_image"></div>
 <div class="super_header">
 	<h1 class="atp">ATP</h1>
-	<ul>
-		<li><a id="m_about" href="about">About</a></li>
-		<li><a id="m_escape" href="escape">Escape</a></li>
-		<li><a id="m_the_liberal_hive_mind" href="the_liberal_hive_mind">The Liberal Hive Mind</a></li>
-		<li><a id="m_ub" href="unnamedblocks">Unnamed Blocks</a></li>
-		<!--<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>-->
-		<li><a id="m_dvs" href="dvs">DVS - Members</a></li>
-		<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
-	</ul>
+	<nav>
+		<ul>
+			<li><a id="m_about" href="about">About</a></li>
+			<li><a id="m_escape" href="escape">Escape</a></li>
+			<li><a id="m_hive_mind" href="hive_mind">Hive Mind</a></li>
+			<li><a id="m_ub" href="unnamedblocks">Unnamed Blocks</a></li>
+			<!--<li><a id="m_baselogic" href="baselogic">Base Logic</a></li>-->
+			<li><a id="m_dvs" href="dvs">DVS - Members</a></li>
+			<li><a id="m_dvs_map" href="http://applesthepi.com:8123" target="_blank">DVS - Map</a></li>
+		</ul>
+	</nav>
 </div>
-<embed style="overflow:hidden;width:100%;height:100%;object-fit:contain;" src="https://applesthepi.com/res/escape.pdf"/></div>
+		<embed style="overflow:hidden;width:100%;height:100%;object-fit:contain;"
+			src="https://applesthepi.com/res/escape.pdf" />
+	</div>
 </body>
 
 </html>

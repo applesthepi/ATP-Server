@@ -9,9 +9,9 @@ fn main() {
 
 		let f_html = std::fs::read_to_string(format!("html/{}", file_name)).unwrap();
 
-		let f_html = f_html.replace("{HEADER_STYLE}", &f_header_style);
-		let f_html = f_html.replace("{HEADER_BODY}", &f_header_body);
-		let f_html = f_html.replace("{HEADER_JS}", &f_header_js);
+		let f_html = f_html.replace("/*HEADER_STYLE*/", &f_header_style);
+		let f_html = f_html.replace("/*HEADER_JS*/", &f_header_js);
+		let f_html = f_html.replace("<!--HEADER_BODY-->", &f_header_body);
 
 		std::fs::write(format!("../html/{}", file_name),f_html).unwrap();
 	}

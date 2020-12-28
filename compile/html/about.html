@@ -2,14 +2,16 @@
 <html>
 
 <head>
+	<meta name="description" content="Jackson Oliver's website">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>About</title>
 	<script>
-{HEADER_JS}
+		/*HEADER_JS*/
 
+		/*
 		function addSidebar(key, src) {
 			let sidebar = document.getElementsByClassName("sidebar_" + key)[0];
-			
+
 			let lowImg = document.createElement("img");
 			lowImg.src = "https://applesthepi.com/res/64/" + src + ".png";
 			lowImg.classList.add("sidebar_image");
@@ -20,7 +22,7 @@
 			highImg.classList.add("sidebar_image");
 			highImg.hidden = true;
 
-			highImg.onload = function() {
+			highImg.onload = function () {
 				sidebar.replaceChild(highImg, lowImg)
 				highImg.hidden = false;
 			};
@@ -28,7 +30,7 @@
 
 		function addCenter(src) {
 			let center = document.getElementsByClassName("fbanner_head")[0];
-			
+
 			let lowImg = document.createElement("img");
 			lowImg.src = "https://applesthepi.com/res/64/" + src + ".png";
 			lowImg.classList.add("center_image");
@@ -39,8 +41,34 @@
 			highImg.classList.add("center_image");
 			highImg.hidden = true;
 
-			highImg.onload = function() {
+			highImg.onload = function () {
 				center.replaceChild(highImg, lowImg)
+				highImg.hidden = false;
+			};
+		}
+		*/
+
+		function addImage(src) {
+			let div = document.getElementsByClassName("pic_container")[0];
+
+			let lowImg = document.createElement("img");
+			lowImg.onerror = function () {
+				div.removeChild(lowImg);
+			};
+			lowImg.src = "https://applesthepi.com/res/64/" + src + ".png";
+			lowImg.classList.add("pic_image");
+			div.appendChild(lowImg);
+
+			let highImg = document.createElement("img");
+			highImg.onerror = function () {
+
+			};
+			highImg.src = "https://applesthepi.com/res/256/" + src + ".png";
+			highImg.classList.add("pic_image");
+			highImg.hidden = true;
+
+			highImg.onload = function () {
+				div.replaceChild(highImg, lowImg)
 				highImg.hidden = false;
 			};
 		}
@@ -48,73 +76,146 @@
 		window.onload = function () {
 			document.getElementById("m_about").className = "active";
 
-			addSidebar("L", "me");
-			addSidebar("L", "oak12");
-			addSidebar("L", "oak5");
-			addSidebar("L", "oak6");
-			addSidebar("L", "oak10");
-			addSidebar("L", "oak1");
-			addSidebar("L", "oak2");
-			addSidebar("L", "oak3");
-			addSidebar("L", "oak4");
+			//addSidebar("L", "me");
+			//addSidebar("L", "oak12");
+			//addSidebar("L", "oak5");
+			//addSidebar("L", "oak6");
+			//addSidebar("L", "oak10");
+			//addSidebar("L", "oak1");
+			//addSidebar("L", "oak2");
+			//addSidebar("L", "oak3");
+			//addSidebar("L", "oak4");
 
-			addSidebar("R", "oak7");
-			addSidebar("R", "oak9");
-			addSidebar("R", "oak11");
-			addSidebar("R", "oak8");
-			addSidebar("R", "oak6");
-			addSidebar("R", "dog1");
-			addSidebar("R", "dog3");
-			addSidebar("R", "dog2");
-			addSidebar("R", "dog4");
+			//addSidebar("R", "oak7");
+			//addSidebar("R", "oak9");
+			//addSidebar("R", "oak11");
+			//addSidebar("R", "oak8");
+			//addSidebar("R", "oak6");
+			//addSidebar("R", "dog1");
+			//addSidebar("R", "dog3");
+			//addSidebar("R", "dog2");
+			//addSidebar("R", "dog4");
 
-			addCenter("faster");
+			//addCenter("faster");
+			for (let i = 53; i >= 0; i--)
+				addImage(i.toString());
 		};
 	</script>
 	<style>
-{HEADER_STYLE}
+		/*HEADER_STYLE*/
+
+		.pic_container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.pic_image {
+			margin: 8px;
+			width: 128px;
+			height: 128px;
+		}
+
+		.fbanner_head {
+			padding: 0px;
+		}
+
+		.split_box {
+			display: flex;
+			flex-flow: row nowrap;
+			align-content: space-between;
+			justify-content: space-between;
+		}
+
+		.spotify_box {
+			min-width: 300px;
+		}
+
+		.content_box {
+			padding: 20px;
+		}
+
+		.spacer_box {
+			width: 0%;
+		}
+
+		@media screen and (max-width: 20cm) {
+			.spacer_box {
+				width: 100%;
+			}
+
+			.spotify_box {
+				width: 100%;
+				height: 400px;
+				min-width: 0px;
+			}
+
+			.pic_image {
+				margin: 4px;
+				width: 128px;
+				height: 128px;
+			}
+
+			.split_box {
+				flex-flow: row wrap;
+			}
+
+			.content_box {
+				padding: 5px;
+			}
+		}
 	</style>
 </head>
 
 <body>
-{HEADER_BODY}
-	<div class="super_container">
-		<div class="sidebar_L">
-		</div>
+	<div class="super_super_container">
+		<!--HEADER_BODY-->
+		<div class="super_container">
+			<div class="fbanner_head">
+				<div class="split_box">
+					<div class="content_box">
+						<br><br>
+						<h2>Interests</h2>
+						<p>
+							Programming lower level languages like C/C++ and more recently Rust are my most
+							prominent interests. I've always wanted to create applications that users can program with
+							for learning or for fun. I am a strong beliver in open source projects and all of my
+							publicly
+							released
+							applications are open source. Graphics, shaders, and parallel processing have also always
+							fascinated me.
+						</p>
 
-		<div class="fbanner_head">
-			<br><br>
-			<h2>Interests</h2>
-			<p>
-				Programming lower level languages like C/C++ and more recently Rust are my most
-				prominent interests. I've always wanted to create applications that users can program with
-				for learning or for fun. I am a strong beliver in open source projects and all of my publicly released
-				applications are open source. Graphics, shaders, and parallel processing have also always
-				fascinated me.
-			</p>
+						<br><br>
+						<h2>Projects</h2>
+						<p>
+							My most important project, Unnamed Blocks, is my most recent and the largest project I've
+							ever
+							attepted with <a href="https://kikoho.xyz/">Jonas</a>. It is licenced under GPL 3.0 (GNU
+							General
+							Public
+							Licence), this is so people
+							can generaly do whatever they want with it. Base Logic was an older project that was a
+							massive
+							extention
+							to BF. It uses cuda to compile and is multithreadable during runtime. This project currently
+							needs a
+							lot
+							more attention to be made fully public so I wont be releasing it here for a while.
+						</p>
 
-			<br><br>
-			<h2>Projects</h2>
-			<p>
-				My most important project, Unnamed Blocks, is my most recent and the largest project I've ever
-				attepted (with a friend). It is licenced under GPL 3.0 (GNU General Public Licence), this is so people
-				can generaly do whatever they want with it. Base Logic is a previous project where the user uses
-				symbols as instructions.
-			</p>
+						<br><br>
+						<br>
+						<div class="pic_container"></div>
+					</div>
+					<div class="spacer_box"></div>
+					<div class="spotify_box">
+						<iframe src="https://open.spotify.com/embed/playlist/7KH5oCRDYKa5a0hXGruC1B" width="100%"
+							height="100%" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+					</div>
+				</div>
 
-			<br><br>
-
-			<!--
-			
-				<br><br>
-			<video width="640" height="360" id="doc_video" controls>
-				<source src="https://applesthepi.com/res/doc.mp4" type="video/mp4">
-			</video>
-
-			-->
-		</div>
-
-		<div class="sidebar_R">
+			</div>
 		</div>
 	</div>
 </body>
