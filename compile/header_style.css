@@ -89,12 +89,28 @@ h2 {
 }
 
 .atp {
+	/*
 	font-size: 96px;
 	
 	line-height: 96px;
 	margin-left: 16px;
 	color: #d62000;
 	text-shadow: -1px -1px 0 rgb(var(--atp-color)), 1px -1px rgb(var(--atp-color)), -1px 1px 0 rgb(var(--atp-color)), 1px 1px 0 rgb(var(--atp-color));
+	*/
+
+	font-size: 96px;
+	
+	line-height: 96px;
+	margin-left: 16px;
+
+
+
+
+	background-image: -webkit-gradient( linear, left top, right top, color-stop(0, rgb(255, 37, 37)), color-stop(0.09, rgb(255, 37, 226)));
+	background-image: gradient( linear, left top, right top, color-stop(0, rgb(255, 37, 37)), color-stop(0.09, rgb(255, 37, 237)));
+	color:transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
 }
 
 h1, h2, h3, h4, p {

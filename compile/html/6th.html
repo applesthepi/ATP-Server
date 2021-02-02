@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="description" content="Jackson Oliver's website">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>6th</title>
+	<script>
+
+		function addImage(src) {
+			let div = document.getElementsByClassName("pic_container")[0];
+
+			let lowImg = document.createElement("img");
+			lowImg.onerror = function () {
+				div.removeChild(lowImg);
+			};
+			lowImg.src = "https://applesthepi.com/res/6th/" + src + ".jpg";
+			lowImg.classList.add("pic_image");
+			div.appendChild(lowImg);
+		}
+
+		function addVideo(src) {
+			let div = document.getElementsByClassName("vid_container")[0];
+
+			let lowImg = document.createElement("video");
+			lowImg.onerror = function () {
+				div.removeChild(lowImg);
+			};
+			lowImg.src = "https://applesthepi.com/res/6th/" + src + ".mp4";
+			lowImg.classList.add("pic_video");
+			div.appendChild(lowImg);
+		}
+
+		window.onload = function () {
+			document.getElementById("m_6th").className = "active";
+
+			//addSidebar("L", "me");
+			//addSidebar("L", "oak12");
+			//addSidebar("L", "oak5");
+			//addSidebar("L", "oak6");
+			//addSidebar("L", "oak10");
+			//addSidebar("L", "oak1");
+			//addSidebar("L", "oak2");
+			//addSidebar("L", "oak3");
+			//addSidebar("L", "oak4");
+
+			//addSidebar("R", "oak7");
+			//addSidebar("R", "oak9");
+			//addSidebar("R", "oak11");
+			//addSidebar("R", "oak8");
+			//addSidebar("R", "oak6");
+			//addSidebar("R", "dog1");
+			//addSidebar("R", "dog3");
+			//addSidebar("R", "dog2");
+			//addSidebar("R", "dog4");
+
+			//addCenter("faster");
+			for (let i = 6; i >= 0; i--)
+				addImage(i.toString());
+
+			//for (let i = 3; i >= 0; i--)
+			//	addVideo(i.toString());
+		};
+	</script>
+	<style>
+		/*HEADER_STYLE*/
+
+		.pic_container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.pic_image {
+			margin: 8px;
+			width: 512px;
+			height: 512px;
+		}
+
+		.pic_video {
+			margin: 8px;
+		}
+
+		.fbanner_head {
+			padding: 0px;
+		}
+
+		.split_box {
+			display: flex;
+			flex-flow: row nowrap;
+			align-content: space-between;
+			justify-content: space-between;
+		}
+
+		.content_box {
+			padding: 20px;
+		}
+
+		.spacer_box {
+			width: 0%;
+		}
+
+		@media screen and (max-width: 20cm) {
+			.spacer_box {
+				width: 100%;
+			}
+
+			.pic_image {
+				margin: 4px;
+				width: 256px;
+				height: 256px;
+			}
+
+			.split_box {
+				flex-flow: row wrap;
+			}
+
+			.content_box {
+				padding: 5px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="super_super_container">
+		<!--HEADER_BODY-->
+		<div class="super_container">
+			<div class="fbanner_head">
+				<div class="split_box">
+					<div class="content_box">
+						<div class="vid_container">
+							<div class="pic_container"></div>
+							<video width="512" height="1024" class="pic_video" controls>
+								<source src="https://applesthepi.com/res/6th/3s.mp4" type="video/mp4">
+							</video>
+							<video width="512" height="1024" class="pic_video" controls>
+								<source src="https://applesthepi.com/res/6th/0s.mp4" type="video/mp4">
+							</video>
+							<video width="512" height="1024" class="pic_video" controls>
+								<source src="https://applesthepi.com/res/6th/1s.mp4" type="video/mp4">
+							</video>
+							<video width="512" height="1024" class="pic_video" controls>
+								<source src="https://applesthepi.com/res/6th/2s.mp4" type="video/mp4">
+							</video>
+						</div>
+					</div>
+					<div class="spacer_box"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
